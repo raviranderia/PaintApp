@@ -64,30 +64,50 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyK-yF-6WJ">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Acj-jR-Bab"/>
+                                    <constraint firstAttribute="height" constant="30" id="ysk-qn-mfQ"/>
+                                </constraints>
                                 <state key="normal" title="0.8"/>
                                 <connections>
                                     <action selector="thicknessSelectionAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RXJ-bf-FDT"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFR-bG-Lpx">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Bkx-nh-dlu"/>
+                                    <constraint firstAttribute="height" constant="30" id="gPY-KJ-tTe"/>
+                                </constraints>
                                 <state key="normal" title="0.6"/>
                                 <connections>
                                     <action selector="thicknessSelectionAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WSx-RQ-Yjh"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2o-jM-Ci0">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Pim-hk-Qhm"/>
+                                    <constraint firstAttribute="width" constant="30" id="zrO-eK-scy"/>
+                                </constraints>
                                 <state key="normal" title="0.4"/>
                                 <connections>
                                     <action selector="thicknessSelectionAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zTA-CF-vDV"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Akl-SN-FcL">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="qSq-Ag-bJJ"/>
+                                    <constraint firstAttribute="width" constant="30" id="x95-9w-dqh"/>
+                                </constraints>
                                 <state key="normal" title="0.2"/>
                                 <connections>
                                     <action selector="thicknessSelectionAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bmr-OB-NXo"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFL-Hs-Ygi">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="AHF-zx-7EL"/>
+                                    <constraint firstAttribute="width" constant="30" id="Re2-db-8WL"/>
+                                </constraints>
                                 <state key="normal" title="1.0"/>
                                 <connections>
                                     <action selector="thicknessSelectionAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CzV-2z-RfQ"/>
@@ -1480,24 +1500,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7LW-Y1-HB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1242" y="68"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="odU-8o-ACV">
-            <objects>
-                <viewController id="sDl-jE-00F" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0ta-Uh-FzR"/>
-                        <viewControllerLayoutGuide type="bottom" id="N2d-FI-LrO"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Cxf-NR-0ac">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hwR-Jd-ikP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="927" y="765"/>
         </scene>
     </scenes>
     <resources>

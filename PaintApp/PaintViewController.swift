@@ -62,6 +62,7 @@ final class PaintViewController: UIViewController, UIPopoverPresentationControll
     @IBOutlet var brushWidthCollection: [UIButton]!
     var initialConstrainTopValues = [CGFloat]()
     var widthConstraintArray : [NSLayoutConstraint]!
+    var widthOptions : [CGFloat]!
 
     func captureInitialTopConstraintsForBrushWidth(constraintArray : [NSLayoutConstraint]) {
         for constraint in constraintArray {
@@ -70,17 +71,19 @@ final class PaintViewController: UIViewController, UIPopoverPresentationControll
     }
     
     func showBrushWidtButtonsAndSetTopConstraintsToInitialValues() {
+        paintViewModel.showingBrushWidthOption = true
         for i in 0..<initialConstrainTopValues.count {
             UIView.animate(withDuration: 0.5, animations: {
                 self.brushWidthCollection[i].isHidden = false
                 self.widthConstraintArray[i].constant = self.initialConstrainTopValues[i]
+                self.drawPreview(button: self.brushWidthCollection[i], width: self.widthOptions[i])
                 self.view.layoutIfNeeded()
             })
         }
     }
     
     func hideBrushWidtButtonsAndSetTopConstraintsToZero() {
-
+        paintViewModel.showingBrushWidthOption = false
         for i in 0..<initialConstrainTopValues.count {
             UIView.animate(withDuration: 0.5, animations: {
                 self.brushWidthCollection[i].isHidden = true
@@ -93,11 +96,9 @@ final class PaintViewController: UIViewController, UIPopoverPresentationControll
     @IBAction func brushWidthAction(_ sender: UIButton) {
         if paintViewModel.showingBrushWidthOption {
             hideBrushWidtButtonsAndSetTopConstraintsToZero()
-            paintViewModel.showingBrushWidthOption = false
             return
         }
         showBrushWidtButtonsAndSetTopConstraintsToInitialValues()
-        paintViewModel.showingBrushWidthOption = true
     }
     
     
@@ -106,6 +107,11 @@ final class PaintViewController: UIViewController, UIPopoverPresentationControll
 
     //this is where the brush hits the paper
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if paintViewModel.showingBrushWidthOption {
+            hideBrushWidtButtonsAndSetTopConstraintsToZero()
+            return
+        }
+        
         paintViewModel.swiped = false
         if let touch = touches.first  {
             paintViewModel.lastPoint = touch.location(in: self.view)
@@ -198,9 +204,29 @@ final class PaintViewController: UIViewController, UIPopoverPresentationControll
         
         widthConstraintArray = [firstButtonWidthTopConstraint,secondButtonWidthTopConstraint,thirdButtonWidthTopConstraint,fourthButtonWidthTopConstraint,fifthButtonWidthTopConstraint]
         captureInitialTopConstraintsForBrushWidth(constraintArray: widthConstraintArray)
+        widthOptions = [10,8,6,4,2]
         hideBrushWidtButtonsAndSetTopConstraintsToZero()
         
     }
+    
+    
+    func drawPreview(button : UIButton ,width : CGFloat) {
+        UIGraphicsBeginImageContext(CGSize(width: 30, height: 30))
+        if let context = UIGraphicsGetCurrentContext(){
+            context.setLineCap(.round)
+            context.setLineWidth(width)
+            context.setStrokeColor(red: paintViewModel.chosenColor.components.red,
+                                   green: paintViewModel.chosenColor.components.green,
+                                   blue: paintViewModel.chosenColor.components.blue, alpha: 1)
+            context.move(to: CGPoint(x: button.bounds.midX, y: button.bounds.midY))
+            context.addLine(to: CGPoint(x: button.bounds.midX, y: button.bounds.midY))
+            context.strokePath()
+            button.setImage(UIGraphicsGetImageFromCurrentImageContext(), for: .normal)
+            
+        }
+        UIGraphicsEndImageContext()
+    }
+
     
     override func viewDidAppear(_ animated: Bool) {
         print("appeared")

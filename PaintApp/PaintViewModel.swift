@@ -19,8 +19,6 @@ struct PaintViewModel {
     var brushWidth: CGFloat = 10.0
     var opacity: CGFloat = 1.0
     var swiped = false
-
-
     
     mutating func toggleEraserStatusAndSetButtonImage() -> UIImage {
         if eraserOn {
