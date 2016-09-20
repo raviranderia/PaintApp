@@ -13,6 +13,8 @@
 		0D56E8731D9067B4002B90EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D56E8721D9067B4002B90EB /* Assets.xcassets */; };
 		0D56E8761D9067B4002B90EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D56E8741D9067B4002B90EB /* LaunchScreen.storyboard */; };
 		0D56E8811D9067B5002B90EB /* PaintAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D56E8801D9067B5002B90EB /* PaintAppTests.swift */; };
+		0D56E8901D9076D6002B90EB /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D56E88F1D9076D6002B90EB /* ColorPickerViewController.swift */; };
+		0D56E8921D907B59002B90EB /* colorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D56E8911D907B59002B90EB /* colorPalette.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		0D56E87C1D9067B5002B90EB /* PaintAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaintAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D56E8801D9067B5002B90EB /* PaintAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintAppTests.swift; sourceTree = "<group>"; };
 		0D56E8821D9067B5002B90EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D56E88F1D9076D6002B90EB /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		0D56E8911D907B59002B90EB /* colorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorPalette.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +81,10 @@
 		0D56E86A1D9067B4002B90EB /* PaintApp */ = {
 			isa = PBXGroup;
 			children = (
+				0D56E8911D907B59002B90EB /* colorPalette.plist */,
 				0D56E86B1D9067B4002B90EB /* AppDelegate.swift */,
 				0D56E86D1D9067B4002B90EB /* ViewController.swift */,
+				0D56E88F1D9076D6002B90EB /* ColorPickerViewController.swift */,
 				0D56E86F1D9067B4002B90EB /* Main.storyboard */,
 				0D56E8721D9067B4002B90EB /* Assets.xcassets */,
 				0D56E8741D9067B4002B90EB /* LaunchScreen.storyboard */,
@@ -183,6 +189,7 @@
 			files = (
 				0D56E8761D9067B4002B90EB /* LaunchScreen.storyboard in Resources */,
 				0D56E8731D9067B4002B90EB /* Assets.xcassets in Resources */,
+				0D56E8921D907B59002B90EB /* colorPalette.plist in Resources */,
 				0D56E8711D9067B4002B90EB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,6 +210,7 @@
 			files = (
 				0D56E86E1D9067B4002B90EB /* ViewController.swift in Sources */,
 				0D56E86C1D9067B4002B90EB /* AppDelegate.swift in Sources */,
+				0D56E8901D9076D6002B90EB /* ColorPickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +351,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EL6K7WT8JU;
 				INFOPLIST_FILE = PaintApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.intrepid.PaintApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -356,6 +365,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EL6K7WT8JU;
 				INFOPLIST_FILE = PaintApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.intrepid.PaintApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -412,6 +422,7 @@
 				0D56E8871D9067B5002B90EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D56E8881D9067B5002B90EB /* Build configuration list for PBXNativeTarget "PaintAppTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +431,7 @@
 				0D56E88A1D9067B5002B90EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
