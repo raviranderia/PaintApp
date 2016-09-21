@@ -73,12 +73,13 @@ final class PaintViewController: UIViewController, UIPopoverPresentationControll
     func showBrushWidtButtonsAndSetTopConstraintsToInitialValues() {
         paintViewModel.showingBrushWidthOption = true
         for i in 0..<initialConstrainTopValues.count {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.brushWidthCollection[i].isHidden = false
-                self.widthConstraintArray[i].constant = self.initialConstrainTopValues[i]
-                self.drawPreview(button: self.brushWidthCollection[i], width: self.widthOptions[i])
-                self.view.layoutIfNeeded()
-            })
+            UIView.animate(withDuration: 0.5) { [weak self] in
+                guard let strongSelf = self else {return}
+                strongSelf.brushWidthCollection[i].isHidden = false
+                strongSelf.widthConstraintArray[i].constant = strongSelf.initialConstrainTopValues[i]
+                strongSelf.drawPreview(button: strongSelf.brushWidthCollection[i], width: strongSelf.widthOptions[i])
+                strongSelf.view.layoutIfNeeded()
+            }
         }
     }
     
