@@ -7,18 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D56E86C1D9067B4002B90EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D56E86B1D9067B4002B90EB /* AppDelegate.swift */; };
-		0D56E86E1D9067B4002B90EB /* PaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D56E86D1D9067B4002B90EB /* PaintViewController.swift */; };
 		0D56E8711D9067B4002B90EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D56E86F1D9067B4002B90EB /* Main.storyboard */; };
 		0D56E8731D9067B4002B90EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D56E8721D9067B4002B90EB /* Assets.xcassets */; };
 		0D56E8761D9067B4002B90EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D56E8741D9067B4002B90EB /* LaunchScreen.storyboard */; };
 		0D56E8811D9067B5002B90EB /* PaintAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D56E8801D9067B5002B90EB /* PaintAppTests.swift */; };
-		0D56E8901D9076D6002B90EB /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D56E88F1D9076D6002B90EB /* ColorPickerViewController.swift */; };
 		0D56E8921D907B59002B90EB /* colorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D56E8911D907B59002B90EB /* colorPalette.plist */; };
-		0DF76B9C1D918122009741E7 /* PaintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF76B9B1D918122009741E7 /* PaintViewModel.swift */; };
-		0DF76BA01D91817F009741E7 /* ColorPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF76B9F1D91817F009741E7 /* ColorPickerViewModel.swift */; };
-		379229A7A96788C0133ADF31 /* Pods_PaintApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F7FC749B3783D40392F90B /* Pods_PaintApp.framework */; };
-		7FC6CB634501D59DDD10C687 /* Pods_PaintAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A5D3943A001F05D7161571 /* Pods_PaintAppTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,12 +39,6 @@
 		0D56E8911D907B59002B90EB /* colorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorPalette.plist; sourceTree = "<group>"; };
 		0DF76B9B1D918122009741E7 /* PaintViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintViewModel.swift; sourceTree = "<group>"; };
 		0DF76B9F1D91817F009741E7 /* ColorPickerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewModel.swift; sourceTree = "<group>"; };
-		54A5D3943A001F05D7161571 /* Pods_PaintAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaintAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		64ED8A22A9589CCFF0DA2DF0 /* Pods-PaintApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaintApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PaintApp/Pods-PaintApp.release.xcconfig"; sourceTree = "<group>"; };
-		8F6D5881973FFB719C9191FA /* Pods-PaintAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaintAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PaintAppTests/Pods-PaintAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		928637CCD4671BA8C02D3B7F /* Pods-PaintApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaintApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PaintApp/Pods-PaintApp.debug.xcconfig"; sourceTree = "<group>"; };
-		9B7DC83D27E887E994B632C0 /* Pods-PaintAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaintAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PaintAppTests/Pods-PaintAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		F2F7FC749B3783D40392F90B /* Pods_PaintApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaintApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				379229A7A96788C0133ADF31 /* Pods_PaintApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +53,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FC6CB634501D59DDD10C687 /* Pods_PaintAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +65,6 @@
 				0D56E86A1D9067B4002B90EB /* PaintApp */,
 				0D56E87F1D9067B5002B90EB /* PaintAppTests */,
 				0D56E8691D9067B4002B90EB /* Products */,
-				47E4E16DD428466145DA25F5 /* Pods */,
 				685117E850D9CE292532EA21 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -144,22 +128,9 @@
 			name = PaintScreen;
 			sourceTree = "<group>";
 		};
-		47E4E16DD428466145DA25F5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				928637CCD4671BA8C02D3B7F /* Pods-PaintApp.debug.xcconfig */,
-				64ED8A22A9589CCFF0DA2DF0 /* Pods-PaintApp.release.xcconfig */,
-				8F6D5881973FFB719C9191FA /* Pods-PaintAppTests.debug.xcconfig */,
-				9B7DC83D27E887E994B632C0 /* Pods-PaintAppTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		685117E850D9CE292532EA21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F2F7FC749B3783D40392F90B /* Pods_PaintApp.framework */,
-				54A5D3943A001F05D7161571 /* Pods_PaintAppTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -171,12 +142,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D56E8851D9067B5002B90EB /* Build configuration list for PBXNativeTarget "PaintApp" */;
 			buildPhases = (
-				A3F6B9DFCE189DD0C26EC7D2 /* [CP] Check Pods Manifest.lock */,
-				0D56E8641D9067B4002B90EB /* Sources */,
 				0D56E8651D9067B4002B90EB /* Frameworks */,
 				0D56E8661D9067B4002B90EB /* Resources */,
-				19BA0BA0F3F608B3836DE4AD /* [CP] Embed Pods Frameworks */,
-				8DACBDD71F633F1B77ED22E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -272,36 +239,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		19BA0BA0F3F608B3836DE4AD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PaintApp/Pods-PaintApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8DACBDD71F633F1B77ED22E8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PaintApp/Pods-PaintApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A0430BF292E0EA4AD0FAB9B9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -315,21 +252,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PaintAppTests/Pods-PaintAppTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A3F6B9DFCE189DD0C26EC7D2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D190C0E293383DF2A0BB3859 /* [CP] Check Pods Manifest.lock */ = {
@@ -365,18 +287,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0D56E8641D9067B4002B90EB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0D56E86E1D9067B4002B90EB /* PaintViewController.swift in Sources */,
-				0DF76BA01D91817F009741E7 /* ColorPickerViewModel.swift in Sources */,
-				0D56E86C1D9067B4002B90EB /* AppDelegate.swift in Sources */,
-				0D56E8901D9076D6002B90EB /* ColorPickerViewController.swift in Sources */,
-				0DF76B9C1D918122009741E7 /* PaintViewModel.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0D56E8781D9067B5002B90EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -512,7 +422,6 @@
 		};
 		0D56E8861D9067B5002B90EB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 928637CCD4671BA8C02D3B7F /* Pods-PaintApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EL6K7WT8JU;
@@ -527,7 +436,6 @@
 		};
 		0D56E8871D9067B5002B90EB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64ED8A22A9589CCFF0DA2DF0 /* Pods-PaintApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EL6K7WT8JU;
@@ -542,7 +450,6 @@
 		};
 		0D56E8891D9067B5002B90EB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F6D5881973FFB719C9191FA /* Pods-PaintAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -558,7 +465,6 @@
 		};
 		0D56E88A1D9067B5002B90EB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B7DC83D27E887E994B632C0 /* Pods-PaintAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
