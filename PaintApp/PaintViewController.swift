@@ -21,47 +21,33 @@ extension UIColor {
 
 final class PaintViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
+    @IBOutlet var constraintArray: [NSLayoutConstraint]!
     @IBOutlet weak var eraserButtonOutlet: UIButton!
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var tempImageView: UIImageView!
-    
-    
-    @IBOutlet weak var firstButtonWidthTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var secondButtonWidthTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var thirdButtonWidthTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var fourthButtonWidthTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var fifthButtonWidthTopConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var colorPickerButtonOutlet: UIButton!
     
     var paintViewModel : PaintViewModel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.paintViewModel = PaintViewModel()
+        captureInitialTopConstraintsForBrushWidth(constraintArray: constraintArray)
+        widthOptions = [10,8,6,4,2]
+        hideBrushWidthButtonsAndSetTopConstraintsToZero()
+    }
     
     @IBAction func eraserButtonPressed(_ sender: UIButton) {
         eraserButtonOutlet.setImage(paintViewModel.toggleEraserStatusAndSetButtonImage(), for: .normal)
     }
     
     @IBAction func thicknessSelectionAction(_ sender: UIButton) {
-        hideBrushWidtButtonsAndSetTopConstraintsToZero()
-        let buttonTag = sender.tag
-        switch buttonTag {
-        case 0 :
-            paintViewModel.brushWidth = 2
-        case 1 :
-            paintViewModel.brushWidth = 4
-        case 2 :
-            paintViewModel.brushWidth = 6
-        case 3 :
-            paintViewModel.brushWidth = 8
-        case 4 :
-            paintViewModel.brushWidth = 10
-        default :
-            paintViewModel.brushWidth = 2
-        }
+        hideBrushWidthButtonsAndSetTopConstraintsToZero()
+        paintViewModel.thicknessActionSelection(sender: sender)
     }
-    
     
     @IBOutlet var brushWidthCollection: [UIButton]!
     var initialConstrainTopValues = [CGFloat]()
-    var widthConstraintArray : [NSLayoutConstraint]!
     var widthOptions : [CGFloat]!
 
     func captureInitialTopConstraintsForBrushWidth(constraintArray : [NSLayoutConstraint]) {
@@ -72,44 +58,43 @@ final class PaintViewController: UIViewController, UIPopoverPresentationControll
     
     func showBrushWidtButtonsAndSetTopConstraintsToInitialValues() {
         paintViewModel.showingBrushWidthOption = true
+        
         for i in 0..<initialConstrainTopValues.count {
             UIView.animate(withDuration: 0.5) { [weak self] in
                 guard let strongSelf = self else {return}
                 strongSelf.brushWidthCollection[i].isHidden = false
-                strongSelf.widthConstraintArray[i].constant = strongSelf.initialConstrainTopValues[i]
+                strongSelf.brushWidthCollection[i].tintColor = strongSelf.paintViewModel.chosenColor
+                strongSelf.constraintArray[i].constant = strongSelf.initialConstrainTopValues[i]
                 strongSelf.drawPreview(button: strongSelf.brushWidthCollection[i], width: strongSelf.widthOptions[i])
                 strongSelf.view.layoutIfNeeded()
             }
         }
     }
     
-    func hideBrushWidtButtonsAndSetTopConstraintsToZero() {
+    func hideBrushWidthButtonsAndSetTopConstraintsToZero() {
         paintViewModel.showingBrushWidthOption = false
         for i in 0..<initialConstrainTopValues.count {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.brushWidthCollection[i].isHidden = true
-                self.widthConstraintArray[i].constant = 0
-                self.view.layoutIfNeeded()
+            UIView.animate(withDuration: 0.5, animations: { [weak self] in
+                guard let strongSelf = self else {return}
+                strongSelf.brushWidthCollection[i].isHidden = true
+                strongSelf.constraintArray[i].constant = 0
+                strongSelf.view.layoutIfNeeded()
             })
         }
     }
     
     @IBAction func brushWidthAction(_ sender: UIButton) {
         if paintViewModel.showingBrushWidthOption {
-            hideBrushWidtButtonsAndSetTopConstraintsToZero()
+            hideBrushWidthButtonsAndSetTopConstraintsToZero()
             return
         }
         showBrushWidtButtonsAndSetTopConstraintsToInitialValues()
     }
-    
-    
-    
-    @IBOutlet weak var colorPickerButtonOutlet: UIButton!
 
-    //this is where the brush hits the paper
+    //MARK : UITouch Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if paintViewModel.showingBrushWidthOption {
-            hideBrushWidtButtonsAndSetTopConstraintsToZero()
+            hideBrushWidthButtonsAndSetTopConstraintsToZero()
             return
         }
         
@@ -130,7 +115,6 @@ final class PaintViewController: UIViewController, UIPopoverPresentationControll
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !paintViewModel.swiped {
-            // draw a single point
             drawLineFrom(fromPoint: paintViewModel.lastPoint, toPoint: paintViewModel.lastPoint)
         }
         UIGraphicsBeginImageContext(mainImageView.frame.size)
@@ -141,37 +125,43 @@ final class PaintViewController: UIViewController, UIPopoverPresentationControll
         tempImageView.image = nil
     }
     
+    
+    //MARK : Top Three Button Methods
     @IBAction func resetAction(_ sender: UIButton) {
         mainImageView.image = nil
-    }
-    
-    @IBAction func settingsAction(_ sender: UIButton) {
-        
     }
     
     @IBAction func shareAction(_ sender: UIButton) {
         
     }
-    
+
     func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
         UIGraphicsBeginImageContext(view.frame.size)
         if let context = UIGraphicsGetCurrentContext(){
         tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
         paintViewModel.configureContext(context: context, fromPoint: fromPoint, toPoint: toPoint).strokePath()
+        
         tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         tempImageView.alpha = paintViewModel.opacity
         UIGraphicsEndImageContext()
         }
     }
     
+    func drawPreview(button : UIButton ,width : CGFloat) {
+        UIGraphicsBeginImageContext(CGSize(width: 30, height: 30))
+        if let context = UIGraphicsGetCurrentContext(){
+        paintViewModel.configurePreviewContextSetting(context: context, button: button, width: width).strokePath()
+        button.setImage(UIGraphicsGetImageFromCurrentImageContext(), for: .normal)
+        }
+        UIGraphicsEndImageContext()
+    }
+    
     func presentViewControllerAsPopover(viewController: UIViewController) {
         if let presentedVC = self.presentedViewController {
             if presentedVC.nibName == viewController.nibName {
-                // The view is already being presented
                 return
             }
         }
-        // Specify presentation style first (makes the popoverPresentationController property available)
         viewController.modalPresentationStyle = .popover
         let viewPresentationController = viewController.popoverPresentationController
         if let presentationController = viewPresentationController {
@@ -193,45 +183,12 @@ final class PaintViewController: UIViewController, UIPopoverPresentationControll
     }
     
     @IBAction func colorPickerButtonAction(_ sender: UIButton) {
+        if paintViewModel.showingBrushWidthOption {
+            hideBrushWidthButtonsAndSetTopConstraintsToZero()
+        }
         let popoverVC = storyboard?.instantiateViewController(withIdentifier: "colorPickerPopover") as! ColorPickerViewController
         popoverVC.colorPickerViewModel = paintViewModel.colorPickerViewModel
         presentViewControllerAsPopover(viewController: popoverVC)
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.paintViewModel = PaintViewModel()
-        
-        widthConstraintArray = [firstButtonWidthTopConstraint,secondButtonWidthTopConstraint,thirdButtonWidthTopConstraint,fourthButtonWidthTopConstraint,fifthButtonWidthTopConstraint]
-        captureInitialTopConstraintsForBrushWidth(constraintArray: widthConstraintArray)
-        widthOptions = [10,8,6,4,2]
-        hideBrushWidtButtonsAndSetTopConstraintsToZero()
-        
-    }
-    
-    
-    func drawPreview(button : UIButton ,width : CGFloat) {
-        UIGraphicsBeginImageContext(CGSize(width: 30, height: 30))
-        if let context = UIGraphicsGetCurrentContext(){
-            context.setLineCap(.round)
-            context.setLineWidth(width)
-            context.setStrokeColor(red: paintViewModel.chosenColor.components.red,
-                                   green: paintViewModel.chosenColor.components.green,
-                                   blue: paintViewModel.chosenColor.components.blue, alpha: 1)
-            context.move(to: CGPoint(x: button.bounds.midX, y: button.bounds.midY))
-            context.addLine(to: CGPoint(x: button.bounds.midX, y: button.bounds.midY))
-            context.strokePath()
-            button.setImage(UIGraphicsGetImageFromCurrentImageContext(), for: .normal)
-            
-        }
-        UIGraphicsEndImageContext()
-    }
-
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("appeared")
-        colorPickerButtonOutlet.setTitleColor(paintViewModel.chosenColor, for: .normal)
     }
 }
 

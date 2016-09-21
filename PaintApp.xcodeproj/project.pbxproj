@@ -12,6 +12,11 @@
 		0D56E8761D9067B4002B90EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D56E8741D9067B4002B90EB /* LaunchScreen.storyboard */; };
 		0D56E8811D9067B5002B90EB /* PaintAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D56E8801D9067B5002B90EB /* PaintAppTests.swift */; };
 		0D56E8921D907B59002B90EB /* colorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D56E8911D907B59002B90EB /* colorPalette.plist */; };
+		0DE9FCFA1D92F38C00554EF4 /* PaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D56E86D1D9067B4002B90EB /* PaintViewController.swift */; };
+		0DE9FCFB1D92F38C00554EF4 /* PaintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF76B9B1D918122009741E7 /* PaintViewModel.swift */; };
+		0DE9FCFC1D92F38C00554EF4 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D56E88F1D9076D6002B90EB /* ColorPickerViewController.swift */; };
+		0DE9FCFD1D92F38C00554EF4 /* ColorPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF76B9F1D91817F009741E7 /* ColorPickerViewModel.swift */; };
+		0DE9FCFE1D92F38C00554EF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D56E86B1D9067B4002B90EB /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +149,7 @@
 			buildPhases = (
 				0D56E8651D9067B4002B90EB /* Frameworks */,
 				0D56E8661D9067B4002B90EB /* Resources */,
+				0DE9FCF91D92F33700554EF4 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -292,6 +298,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D56E8811D9067B5002B90EB /* PaintAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0DE9FCF91D92F33700554EF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DE9FCFA1D92F38C00554EF4 /* PaintViewController.swift in Sources */,
+				0DE9FCFB1D92F38C00554EF4 /* PaintViewModel.swift in Sources */,
+				0DE9FCFC1D92F38C00554EF4 /* ColorPickerViewController.swift in Sources */,
+				0DE9FCFD1D92F38C00554EF4 /* ColorPickerViewModel.swift in Sources */,
+				0DE9FCFE1D92F38C00554EF4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

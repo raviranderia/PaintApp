@@ -20,6 +20,37 @@ struct PaintViewModel {
     var opacity: CGFloat = 1.0
     var swiped = false
     
+    mutating func thicknessActionSelection(sender : UIButton) {
+        let buttonTag = sender.tag
+        switch buttonTag {
+        case 0 :
+            brushWidth = 2
+        case 1 :
+            brushWidth = 4
+        case 2 :
+            brushWidth = 6
+        case 3 :
+            brushWidth = 8
+        case 4 :
+            brushWidth = 10
+        default :
+            brushWidth = 2
+        }
+
+    }
+    
+    func configurePreviewContextSetting(context : CGContext,button : UIButton,width : CGFloat) -> CGContext {
+        
+        context.setLineCap(.round)
+        context.setLineWidth(width)
+        context.setStrokeColor(red: 0, green: 0, blue: 0, alpha: 1)
+        context.setFillColor(red: 0, green: 0, blue: 0, alpha: 1)
+        context.move(to: CGPoint(x: button.bounds.midX, y: button.bounds.midY))
+        context.addLine(to: CGPoint(x: button.bounds.midX, y: button.bounds.midY))
+        return context
+    }
+    
+    
     mutating func toggleEraserStatusAndSetButtonImage() -> UIImage {
         if eraserOn {
             eraserOn = false
