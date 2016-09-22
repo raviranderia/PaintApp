@@ -9,18 +9,42 @@
 import Foundation
 import UIKit
 
-struct PaintViewModel {
+final class PaintViewModel {
     
+    var swiped = false
     var eraserOn = Bool()
     var lastPoint = CGPoint.zero
     var showingBrushWidthOption = Bool()
-    var colorPickerViewModel = ColorPickerViewModel()
     
-    var brushWidth: CGFloat = 10.0
-    var opacity: CGFloat = 1.0
-    var swiped = false
+    private(set) var initialConstrainTopValues = [CGFloat]()
+    private(set) var brushWidth: CGFloat = 10.0
+    private(set) var opacity: CGFloat = 1.0
+    private(set) var widthOptions : [CGFloat] = [10,8,6,4,2]
+    private(set) var activityTypeList : [UIActivityType] = [UIActivityType.print, UIActivityType.postToWeibo, UIActivityType.copyToPasteboard, UIActivityType.addToReadingList, UIActivityType.postToVimeo,UIActivityType.airDrop,UIActivityType.assignToContact,UIActivityType.message,UIActivityType.postToFacebook,UIActivityType.mail,UIActivityType.saveToCameraRoll]
     
-    mutating func thicknessActionSelection(sender : UIButton) {
+    private var chosenColor : UIColor!
+    
+    func returnChosenColor() -> UIColor {
+        if eraserOn {
+            return UIColor.white
+        }
+        if let chosenColor = chosenColor {
+            return chosenColor
+        }
+        return UIColor.black
+    }
+    
+    func setChosenColor(color : UIColor) {
+        self.chosenColor = color
+    }
+    
+    func captureInitialTopConstraintsForBrushWidth(constraintArray : [NSLayoutConstraint]) {
+        for constraint in constraintArray {
+            initialConstrainTopValues.append(constraint.constant)
+        }
+    }
+    
+    func thicknessActionSelection(sender : UIButton) {
         let buttonTag = sender.tag
         switch buttonTag {
         case 0 :
@@ -36,22 +60,9 @@ struct PaintViewModel {
         default :
             brushWidth = 2
         }
-
     }
     
-    func configurePreviewContextSetting(context : CGContext,button : UIButton,width : CGFloat) -> CGContext {
-        
-        context.setLineCap(.round)
-        context.setLineWidth(width)
-        context.setStrokeColor(red: 0, green: 0, blue: 0, alpha: 1)
-        context.setFillColor(red: 0, green: 0, blue: 0, alpha: 1)
-        context.move(to: CGPoint(x: button.bounds.midX, y: button.bounds.midY))
-        context.addLine(to: CGPoint(x: button.bounds.midX, y: button.bounds.midY))
-        return context
-    }
-    
-    
-    mutating func toggleEraserStatusAndSetButtonImage() -> UIImage {
+    func toggleEraserStatusAndSetButtonImage() -> UIImage {
         if eraserOn {
             eraserOn = false
             return #imageLiteral(resourceName: "eraser")
@@ -59,29 +70,4 @@ struct PaintViewModel {
         eraserOn = true
         return #imageLiteral(resourceName: "magicEraser")
     }
-    
-    var chosenColor : UIColor {
-        if eraserOn {
-            return UIColor.white
-        }
-        if let colorSet  = colorPickerViewModel.chosenColor {
-            return colorSet
-        }
-        return UIColor.black
-    }
-    
-    func configureContext(context : CGContext,fromPoint : CGPoint,toPoint : CGPoint) -> CGContext {
-        context.move(to: fromPoint)
-        context.addLine(to: toPoint)
-        
-        context.setLineCap(CGLineCap.round)
-        context.setLineWidth(brushWidth)
-        context.setStrokeColor(red: chosenColor.components.red,
-                               green: chosenColor.components.green,
-                               blue: chosenColor.components.blue,
-                               alpha: 1)
-        context.setBlendMode(CGBlendMode.normal)
-        return context
-    }
-    
 }

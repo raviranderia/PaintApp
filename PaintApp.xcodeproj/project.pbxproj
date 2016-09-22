@@ -12,6 +12,7 @@
 		0D56E8761D9067B4002B90EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D56E8741D9067B4002B90EB /* LaunchScreen.storyboard */; };
 		0D56E8811D9067B5002B90EB /* PaintAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D56E8801D9067B5002B90EB /* PaintAppTests.swift */; };
 		0D56E8921D907B59002B90EB /* colorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D56E8911D907B59002B90EB /* colorPalette.plist */; };
+		0DAC70231D9327B90099D3C4 /* DrawingPadUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAC70221D9327B90099D3C4 /* DrawingPadUIView.swift */; };
 		0DE9FCFA1D92F38C00554EF4 /* PaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D56E86D1D9067B4002B90EB /* PaintViewController.swift */; };
 		0DE9FCFB1D92F38C00554EF4 /* PaintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF76B9B1D918122009741E7 /* PaintViewModel.swift */; };
 		0DE9FCFC1D92F38C00554EF4 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D56E88F1D9076D6002B90EB /* ColorPickerViewController.swift */; };
@@ -42,6 +43,7 @@
 		0D56E8821D9067B5002B90EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D56E88F1D9076D6002B90EB /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		0D56E8911D907B59002B90EB /* colorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorPalette.plist; sourceTree = "<group>"; };
+		0DAC70221D9327B90099D3C4 /* DrawingPadUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingPadUIView.swift; sourceTree = "<group>"; };
 		0DF76B9B1D918122009741E7 /* PaintViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintViewModel.swift; sourceTree = "<group>"; };
 		0DF76B9F1D91817F009741E7 /* ColorPickerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +131,7 @@
 			children = (
 				0D56E86D1D9067B4002B90EB /* PaintViewController.swift */,
 				0DF76B9B1D918122009741E7 /* PaintViewModel.swift */,
+				0DAC70221D9327B90099D3C4 /* DrawingPadUIView.swift */,
 			);
 			name = PaintScreen;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 			files = (
 				0DE9FCFA1D92F38C00554EF4 /* PaintViewController.swift in Sources */,
 				0DE9FCFB1D92F38C00554EF4 /* PaintViewModel.swift in Sources */,
+				0DAC70231D9327B90099D3C4 /* DrawingPadUIView.swift in Sources */,
 				0DE9FCFC1D92F38C00554EF4 /* ColorPickerViewController.swift in Sources */,
 				0DE9FCFD1D92F38C00554EF4 /* ColorPickerViewModel.swift in Sources */,
 				0DE9FCFE1D92F38C00554EF4 /* AppDelegate.swift in Sources */,

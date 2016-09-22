@@ -9,29 +9,45 @@
 import Foundation
 import UIKit
 
-class ColorPickerViewModel {
+
+extension UIColor {
+    var coreImageColor: CIColor {
+        return CIColor(color: self)
+    }
+    var components: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        let color = coreImageColor
+        return (color.red, color.green, color.blue, color.alpha)
+    }
+}
+
+struct ColorPickerViewModel {
     
     // Global variables
+    //cannot be private as it is reset to zero on viewDidLoad in Controller as ColorPickerViewModel is a class and being passed around
     var tag: Int = 0
-    var color: UIColor = UIColor.gray
-    var chosenColor : UIColor!
+    private var color: UIColor = UIColor.gray
+    private(set) var chosenColor : UIColor!
+    private var columns = 10
+    private var rows = 16
     
+    
+    //preseting 160 colors
     var numberOfItemsInSection : Int {
-        return 10
+        return columns
     }
     
     var numberOfSections : Int {
-        return 16
+        return rows
     }
     
-    func cellForItemAtIndexPath(cell : UICollectionViewCell,indexPath : IndexPath) -> UICollectionViewCell {
+    mutating func cellForItemAtIndexPath(cell : UICollectionViewCell,indexPath : IndexPath) -> UICollectionViewCell {
         cell.backgroundColor = UIColor.clear
         cell.tag = tag
         tag += 1
         return cell
     }
     
-    func didSelectItemAtIndexPath(cell : UICollectionViewCell,indexPath : IndexPath,completion : (Bool) -> ()) {
+    mutating func didSelectItemAtIndexPath(cell : UICollectionViewCell,indexPath : IndexPath,completion : (Bool) -> ()) {
         var colorPalette: Array<String>
         
         // Get colorPalette array from plist file
@@ -48,7 +64,7 @@ class ColorPickerViewModel {
         completion(false)
     }
     
-    func hexStringToUIColor (hex:String) -> UIColor {
+    private func hexStringToUIColor (hex:String) -> UIColor {
         var cString : String = hex.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).uppercased()
         
         if cString.hasPrefix("#") {

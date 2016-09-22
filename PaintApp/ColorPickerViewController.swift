@@ -8,16 +8,25 @@
 
 import UIKit
 
+
+protocol ColorPickerViewControllerDelegate : class {
+    func colorPickerViewController(controller : ColorPickerViewController, didSelectColor color: UIColor)
+}
+
 final class ColorPickerViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    
+    //not private because it is set from PaintViewcontroller (passing around class reference)
     var colorPickerViewModel : ColorPickerViewModel!
+    
+    weak var delegate : ColorPickerViewControllerDelegate?
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        colorPickerViewModel = ColorPickerViewModel()
         colorPickerViewModel.tag = 0
     }
     
+    //MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colorPickerViewModel.numberOfItemsInSection
     }
@@ -37,6 +46,7 @@ final class ColorPickerViewController: UIViewController,UICollectionViewDelegate
         let cell: UICollectionViewCell  = collectionView.cellForItem(at: indexPath as IndexPath)! as UICollectionViewCell
         colorPickerViewModel.didSelectItemAtIndexPath(cell: cell, indexPath: indexPath) { (success) in
             if success {
+                delegate?.colorPickerViewController(controller: self, didSelectColor: self.colorPickerViewModel.chosenColor)
                 self.dismiss(animated: true, completion: nil)
             }
         }
